@@ -29,8 +29,8 @@ const App: React.FC = () => {
       const nextItem = queue.find(item => item.status === ProcessingStatus.IDLE);
       if (!nextItem) return;
 
-      // Rate limiting delay (6 seconds) to ensure <10 RPM for Free Tier safety
-      await new Promise(resolve => setTimeout(resolve, 6000));
+      // Rate limiting delay (10 seconds) to be extremely safe with Free Tier
+      await new Promise(resolve => setTimeout(resolve, 10000));
 
       setProcessingId(nextItem.id);
       updateItemStatus(nextItem.id, ProcessingStatus.SCANNING);

@@ -111,6 +111,8 @@ export const processReceiptImage = async (base64Image: string): Promise<ReceiptD
 
       // Si el error es de cuota (429), continuamos al siguiente modelo inmediatamente
       if (error.status === 429 || error.message?.includes('429') || error.message?.includes('Quota')) {
+        console.warn(`Cuota excedida para ${model}, esperando 3s antes de probar el siguiente...`);
+        await delay(3000); // Wait 3s before trying next model to avoid bursting
         continue;
       }
       // Para otros errores, quizás también valga la pena probar otro modelo, 
