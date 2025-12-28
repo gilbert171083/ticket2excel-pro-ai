@@ -1,0 +1,8 @@
+
+{
+  "name": "Ticket2Excel Pro AI",
+  "description": "Herramienta profesional para la extracción de datos fiscales de tickets y facturas con exportación a Excel.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
