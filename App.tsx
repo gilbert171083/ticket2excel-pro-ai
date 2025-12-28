@@ -29,6 +29,9 @@ const App: React.FC = () => {
       const nextItem = queue.find(item => item.status === ProcessingStatus.IDLE);
       if (!nextItem) return;
 
+      // Rate limiting delay (2 seconds) to avoid 429 errors
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
       setProcessingId(nextItem.id);
       updateItemStatus(nextItem.id, ProcessingStatus.SCANNING);
 
